@@ -1,0 +1,71 @@
+# Copy this file to config.yaml and edit only your local paths/settings.
+# Relative paths are resolved relative to config.yaml.
+
+project:
+  analysis_name: negative_symptoms_head01
+  cache_dir: work/cache
+  output_dir: results
+
+input:
+  # ONE CSV is used by both scripts.
+  study_table: studies.csv
+  # Stage 1 writes here; Stage 2 reads the same folders.
+  simulation_root: simulations
+  folder_template: '{Study_ID}_study'
+  mesh_glob: '*_scalar.msh'
+  manifest_csv: null
+
+simulation:
+  # Local paths: do not commit your real config.yaml to GitHub.
+  head_model_path: null
+  coil_models_root: null
+  didtmax_lookup_csv: null
+  open_in_gmsh: false
+  dry_run: true
+  run_only_studies: null
+  output_folder_suffix: '_study'
+  use_distance_from_csv: true
+  default_distance_mm: 0.0
+  preferred_eeg_positions_file: 'EEG10-10_UI_Jurak_2007.csv'
+
+columns:
+  study_id: Study_ID
+  study_name: Study_name
+  effect_size: effect_size
+  include: null
+  outcome: null
+  independent_unit: null
+
+selection:
+  outcome: null
+  study_ids: null
+
+mesh:
+  head_model_id: head01
+  field_name: magnE
+  tissue_tag: 2
+  coordinate_tolerance_mm: 0.000001
+
+statistics:
+  # Start with 0 when reproducing/checking your old rho map. Then increase for inference.
+  n_permutations: 0
+  seed: 42
+  permutation_batch_size: 64
+  element_block_size: 8192
+  working_memory_mb: 512
+  blas_threads: 1
+  checkpoint_every: 256
+  # Set true only after confirming selected effect sizes are independent/exchangeable units.
+  independent_studies_confirmed: false
+  effect_size_definition: 'EDIT: comparison, outcome, time point and estimator'
+  positive_effect_means: 'EDIT: define the positive direction'
+
+clusters:
+  enabled: false
+  forming_p_approx: 0.01
+  rho_threshold: null
+  statistic: mass
+
+export:
+  csv: true
+  mesh: true

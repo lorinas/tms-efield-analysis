@@ -1,0 +1,19 @@
+# Local configuration / data
+config.yaml
+studies.csv
+data/
+simulations/
+work/
+results/
+
+# Python / IDE
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.idea/
+.DS_Store
+
+# Large SimNIBS outputs
+*.msh
+*.nii
+*.nii.gz

@@ -1,0 +1,2 @@
+Study_ID,Study_name,region,targeting_method,coil_mt,coil_center,coil_name,distance,effect_size
+1,sub-0105_left_dlpfc_F3,left dlpfc,EEG,0.8,F3,MagStim_D70.ccd,4,0.42
